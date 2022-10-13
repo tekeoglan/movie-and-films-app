@@ -1,31 +1,40 @@
 .navbar {
-	border: 1px solid blue;
-	padding: .75em;
+	min-height: 7.5vh;
+	background-color: #415A77;
+	border-bottom: .75px solid #E0E1DD;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .logo {
-	font-size: 2em;
-	border: 1px solid pink;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
 	font-weight: 700;
 	width: 20%;
 }
 
 .searchBar {
-	border: 1px solid white;
 	display: flex;
 	align-items: center;
 	width: 40%;
 	padding: .50rem;
 }
 
+.searchBar form {
+	display: flex;
+	width: 95%;
+	height: 2rem;
+	margin: 0 .25rem;
+}
+
 .searchBar input {
-	flex: 1;
-	margin-left: .25rem;
-	border-radius: 12px;
+	width: 100%;
+	border-radius: 8px;
 	border: none;
-	background-color: inherit;
+	background-color: #E0E1DD;
 }
 
 .searchBar input:focus {
@@ -38,14 +47,15 @@
 }
 
 .categories {
-	border: 1px solid red;
 	display: flex;
-	justify-content: flex-start;
 	align-items: center;
+	margin: 0;
+	padding: 0;
 	width: 30%;
+	list-style-type: none;
 	font-weight: 500;
 }
 
-.categories div {
-	margin: 0 1rem
+.categories li {
+	margin-right: 1rem;
 }

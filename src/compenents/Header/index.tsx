@@ -18,8 +18,8 @@ const Header = () => {
 
   return (
     <IconContext.Provider value={{ size: "2em" }}>
-      <div className={styles.navbar}>
-        <div className={styles.logo}>Shows&Films</div>
+      <nav className={styles.navbar}>
+        <a className={styles.logo}>Shows&Films</a>
         <div className={styles.searchBar}>
           <MdSearch />
           <form onSubmit={onSearchInputSubmit}>
@@ -31,12 +31,12 @@ const Header = () => {
             <button type="submit">search</button>
           </form>
         </div>
-        <div className={styles.categories}>
-          <div>People</div>
-          <div>Shows</div>
-          <div>Films</div>
-        </div>
-      </div>
+        <ul className={styles.categories}>
+          <li>People</li>
+          <li>Shows</li>
+          <li>Films</li>
+        </ul>
+      </nav>
     </IconContext.Provider>
   );
 };
