@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { TMDB_API, TMDB_IMAGE_PATH } from "../../config/constants/endpoints";
-import Header from "../../compenents/Header";
+import { TMDB_API } from "config/constants/endpoints";
+import Header from "compenents/Header";
 import Panel from "./compenents/Panel";
 
-type Props = {
-  header: string;
-  images: string[];
-};
-
 const Home = () => {
-  const [filmProps, setFilmProps] = useState<Props | null>({
-    header: "Trending Films",
-    images: [],
-  });
+  const [filmProps, setFilmProps] = useState<[] | null>(null);
 
   const fetcthMovie = async () => {
     try {
@@ -22,14 +14,9 @@ const Home = () => {
           api_key: process.env.TMDB_API_KEY,
         },
       });
-      let newImages = [].fill("");
-      let path = "";
-      for (let i = 0; i < 4; i++) {
-        path = response.data.results[i].poster_path;
-        newImages[i] = `${TMDB_IMAGE_PATH}${path}`;
-      }
+      let data = response.data.results;
       setFilmProps((prev) => {
-        return { ...prev, images: newImages };
+        return { ...prev, ...data };
       });
       console.log("response:", response);
     } catch (err) {
@@ -51,7 +38,13 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Panel {...filmProps} />
+      <main>
+        {filmProps ? (
+          <Panel tag={"Trending Films"} data={filmProps} />
+        ) : (
+          <h5>Trending Films</h5>
+        )}
+      </main>
     </>
   );
 };
