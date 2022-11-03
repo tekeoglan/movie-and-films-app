@@ -1,48 +1,18 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { TMDB_API } from "config/constants/endpoints";
 import Header from "compenents/Header";
 import Panel from "./compenents/Panel";
+import useFetchData from "hooks/useFetchData";
 
 const Home = () => {
-  const [filmProps, setFilmProps] = useState<[] | null>(null);
-
-  const fetcthMovie = async () => {
-    try {
-      const response = await axios.get(`${TMDB_API}/trending/movie/day`, {
-        params: {
-          api_key: process.env.TMDB_API_KEY,
-        },
-      });
-      let data = response.data.results;
-      setFilmProps((prev) => {
-        return { ...prev, ...data };
-      });
-      console.log("response:", response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    let ignore = false;
-    if (!ignore) {
-      fetcthMovie();
-    }
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
+  const [state] = useFetchData("/trending/movie/day");
   return (
     <>
       <Header />
       <main>
-        {filmProps ? (
-          <Panel tag={"Trending Films"} data={filmProps} />
-        ) : (
+        {state.isFetching ? (
           <h5>Trending Films</h5>
+        ) : (
+          <Panel tag={"Trending Films"} data={state.data.results} />
         )}
       </main>
     </>

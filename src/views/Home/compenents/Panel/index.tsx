@@ -13,15 +13,15 @@ const numberTrunc = (n: number) => {
   return s.slice(0, 3);
 };
 
-const Banner = ({ data, index }) => {
+const Cover = ({ data, index }) => {
   return (
-    <div id={styles[`part${index + 1}`]}>
+    <div id={styles[`part${index + 1}`]} className={styles.part}>
       <img src={`${TMDB_IMAGE_PATH}${data[index]?.backdrop_path}`} />
       <div className={styles.imageProps}>
         <span className={styles.imageTitle}>{data[index]?.title}</span>
-        <span className={styles.imageRate}>{`${numberTrunc(
-          data[index]?.vote_average
-        )}/10`}</span>
+        <span className={styles.imageRate}>
+          {numberTrunc(data[index]?.vote_average)}
+        </span>
         <div className={styles.imageGenre}>
           {data[index]?.genre_ids.map((id: number, i: number) => {
             return (
@@ -43,10 +43,10 @@ const Panel = ({ tag, data }: PanelProps) => {
         <span>{tag}</span>
       </div>
       <div className={styles.container}>
-        <Banner data={data} index={0} />
-        <Banner data={data} index={1} />
-        <Banner data={data} index={2} />
-        <Banner data={data} index={3} />
+        <Cover data={data} index={0} />
+        <Cover data={data} index={1} />
+        <Cover data={data} index={2} />
+        <Cover data={data} index={3} />
       </div>
     </div>
   );
