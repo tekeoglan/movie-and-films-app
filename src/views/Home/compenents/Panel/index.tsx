@@ -1,6 +1,8 @@
 import styles from "./Panel.module.css";
 import { TMDB_IMAGE_PATH } from "config/constants/endpoints";
-import MovieGenres from "config/constants/movie-genres.json";
+import Genres from "config/constants/genres.json";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 type PanelProps = {
   tag: string;
@@ -14,11 +16,23 @@ const numberTrunc = (n: number) => {
 };
 
 const Cover = ({ data, index }) => {
+  const router = useRouter();
+
+  const [coverTitle] = useState(
+    data[index]?.media_type === "tv" ? data[index]?.name : data[index]?.title
+  );
+
   return (
     <div id={styles[`part${index + 1}`]} className={styles.part}>
-      <img src={`${TMDB_IMAGE_PATH}${data[index]?.backdrop_path}`} />
+      <img
+        src={`${TMDB_IMAGE_PATH}${data[index]?.backdrop_path}`}
+        title={coverTitle}
+        onClick={() => {
+          router.push(`/${data[index]?.media_type}/${data[index]?.id}`);
+        }}
+      />
       <div className={styles.imageProps}>
-        <span className={styles.imageTitle}>{data[index]?.title}</span>
+        <span className={styles.imageTitle}>{coverTitle}</span>
         <span className={styles.imageRate}>
           {numberTrunc(data[index]?.vote_average)}
         </span>
@@ -26,7 +40,7 @@ const Cover = ({ data, index }) => {
           {data[index]?.genre_ids.map((id: number, i: number) => {
             return (
               <span key={i} className={styles.genre}>
-                {MovieGenres[id]}
+                {Genres[id]}
               </span>
             );
           })}

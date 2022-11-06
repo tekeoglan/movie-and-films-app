@@ -1,5 +1,6 @@
 import { type } from "os";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./Header.module.css";
 import { MdSearch } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -19,7 +20,9 @@ const Header = () => {
   return (
     <IconContext.Provider value={{ size: "2em" }}>
       <nav className={styles.navbar}>
-        <a className={styles.logo}>Shows&Films</a>
+        <Link href="/">
+          <a className={styles.logo}>Shows&Films</a>
+        </Link>
         <div className={styles.searchBar}>
           <MdSearch />
           <form onSubmit={onSearchInputSubmit}>

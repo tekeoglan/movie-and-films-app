@@ -9,8 +9,13 @@
 	font-weight: 500;
 }
 
+.header span {
+	padding-bottom: 5px;
+	border-bottom: .5px solid #E0E1DD;
+}
+
 .container {
-	border: 1.5px groove white;
+	border: 1.5px groove #E0E1DD;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: auto;
@@ -45,7 +50,8 @@
 	font-weight: 600;
 	color: #E0E1DD;
 	left: 3.75em;
-	bottom: 1.75em;
+	bottom: 2em;
+	-webkit-text-stroke: .3px black;
 }
 
 
@@ -54,7 +60,7 @@
 	font-size: .75em;
 	font-weight: 400;
 	left: 5em;
-	bottom: .75em;
+	bottom: 1em;
 }
 
 .genre {
@@ -92,6 +98,7 @@
 }
 
 .part img:hover {
+	cursor: pointer;
 	-webkit-transform:scale(1.5); /* Safari and Chrome */
   -moz-transform:scale(1.5); /* Firefox */
   -ms-transform:scale(1.5); /* IE 9 */
