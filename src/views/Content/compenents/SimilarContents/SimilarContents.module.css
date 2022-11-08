@@ -1,0 +1,48 @@
+.container {
+	margin: 1rem 2rem;
+	height: 40vh;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1rem;
+}
+
+.similarContent {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	border: 1px outset #E0E1DD;
+}
+
+.similarContent > * {
+	position: absolute;
+}
+
+.similarContent span {
+	border: 1px outset #E0E1DD;
+	border-radius: 5px;
+	left: .5em;
+	bottom: .5em;
+	color: #e9c46a;
+	background-color: #778DA9;
+	font-weight: 500;
+	padding: .25em;
+}
+
+.similarContent a {
+	-webkit-text-stroke: .3px black;
+	color: #E0E1DD;
+	bottom: .5em;
+	left: 3rem;
+}
+
+.similarContent img {
+	position: static !important;
+	object-fit: contain;
+	width: auto;
+	height: 100%;
+}
+
+.similarContent:hover {
+	cursor: pointer;
+}

@@ -3,16 +3,11 @@ import { TMDB_IMAGE_PATH } from "config/constants/endpoints";
 import Genres from "config/constants/genres.json";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { numberTrunc } from "utils";
 
 type PanelProps = {
   tag: string;
   data: any;
-};
-
-const numberTrunc = (n: number) => {
-  let s = n.toString();
-  if (s.length < 3) return;
-  return s.slice(0, 3);
 };
 
 const Cover = ({ data, index }) => {
