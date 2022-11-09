@@ -24,15 +24,10 @@
 }
 
 .part {
+	position: relative;
 	color: #E0E1DD;
 	background-color: rgba(119, 141, 169, .75);
 	border: .5px solid #E0E1DD;
-}
-
-.part img {
-	object-fit: cover;
-	width: 100%;
-	height:	100%;
 }
 
 .part ul {

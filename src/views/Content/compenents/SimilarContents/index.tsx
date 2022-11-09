@@ -1,5 +1,6 @@
 import styles from "./SimilarContents.module.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { TMDB_IMAGE_PATH } from "config/constants/endpoints";
 import { numberTrunc } from "utils";
 
@@ -7,8 +8,12 @@ const Content = ({ kind, props }) => {
   const router = useRouter();
   return (
     <div className={styles.similarContent}>
-      <img
+      <Image
+        className={styles.nextImage}
         src={`${TMDB_IMAGE_PATH}${props?.poster_path}`}
+        layout="fill"
+        objectFit="cover"
+        alt="content image"
         onClick={() => {
           router.push(`/${kind}/${props?.id}`);
         }}

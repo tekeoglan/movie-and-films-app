@@ -3,6 +3,7 @@ import Header from "compenents/Header";
 import SimilarContents from "./compenents/SimilarContents";
 import styles from "./Content.module.css";
 import { TMDB_IMAGE_PATH, YT_WATCH_PATH } from "config/constants/endpoints";
+import Image from "next/image";
 
 type ContentProps = {
   kind: string;
@@ -12,9 +13,9 @@ type ContentProps = {
   similars: any;
 };
 
-const parseGenres = (genres: []): string => {
+const parseGenres = (genres: any[]): string => {
   let s = "";
-  genres?.map((genre) => {
+  genres.map((genre) => {
     s += `${genre.name}, `;
   });
   return s;
@@ -56,7 +57,11 @@ const Content = ({ kind, data, videos, reviews, similars }: ContentProps) => {
       <main className={styles.content}>
         <div className={styles.contentProps} style={propsStyle}>
           <div id={styles["part1"]} className={styles.part}>
-            <img src={`${TMDB_IMAGE_PATH}${data?.poster_path}`} />
+            <Image
+              src={`${TMDB_IMAGE_PATH}${data?.poster_path}`}
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
           <div id={styles["part2"]} className={styles.part}>
             <iframe

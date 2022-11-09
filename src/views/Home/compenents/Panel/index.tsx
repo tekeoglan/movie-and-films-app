@@ -4,6 +4,7 @@ import Genres from "config/constants/genres.json";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { numberTrunc } from "utils";
+import Image from "next/image";
 
 type PanelProps = {
   tag: string;
@@ -19,9 +20,12 @@ const Cover = ({ data, index }) => {
 
   return (
     <div id={styles[`part${index + 1}`]} className={styles.part}>
-      <img
+      <Image
+        className={styles.nextImage}
         src={`${TMDB_IMAGE_PATH}${data[index]?.backdrop_path}`}
         title={coverTitle}
+        layout="fill"
+        objectFit="cover"
         onClick={() => {
           router.push(`/${data[index]?.media_type}/${data[index]?.id}`);
         }}
