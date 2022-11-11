@@ -15,7 +15,7 @@ type ContentProps = {
 
 const parseGenres = (genres: any[]): string => {
   let s = "";
-  genres.map((genre) => {
+  genres?.map((genre) => {
     s += `${genre.name}, `;
   });
   return s;
@@ -25,9 +25,9 @@ const TvAttributes = ({ data }) => {
   return (
     <ul>
       <li>{`Genres: ${parseGenres(data?.genres)}`}</li>
-      <li>{`Release Date: ${data?.first_air_date}`}</li>
-      <li>{`Total Episodes: ${data?.number_of_episodes}`}</li>
-      <li>{`Total Seasons: ${data?.number_of_seasons}`}</li>
+      <li>{`Release Date: ${data?.first_air_date || ""}`}</li>
+      <li>{`Total Episodes: ${data?.number_of_episodes || "0"}`}</li>
+      <li>{`Total Seasons: ${data?.number_of_seasons || "0"}`}</li>
     </ul>
   );
 };
@@ -36,9 +36,9 @@ const MovieAttributes = ({ data }) => {
   return (
     <ul>
       <li>{`Genres: ${parseGenres(data?.genres)}`}</li>
-      <li>{`Release Date: ${data?.release_date}`}</li>
-      <li>{`Budget: ${data.budget?.toLocaleString()}`}</li>
-      <li>{`Revenue: ${data.revenue?.toLocaleString()}`}</li>
+      <li>{`Release Date: ${data?.release_date || ""}`}</li>
+      <li>{`Budget: ${data.budget?.toLocaleString() || "0"}`}</li>
+      <li>{`Revenue: ${data.revenue?.toLocaleString() || "0"}`}</li>
     </ul>
   );
 };
@@ -82,13 +82,13 @@ const Content = ({ kind, data, videos, reviews, similars }: ContentProps) => {
             )}
           </div>
           <div id={styles["part4"]} className={styles.part}>
-            <p>{data?.overview}</p>
+            <p>{data?.overview || "Overview"}</p>
           </div>
         </div>
         <div className={styles.reviews}>
           <p>
-            <span>{`${reviews[0]?.author}: `}</span>
-            {`${reviews[0]?.content}`}
+            <span>{`${reviews[0]?.author || "Author"}: `}</span>
+            {`${reviews[0]?.content || "review"}`}
           </p>
         </div>
         <SimilarContents spec={kind} data={similars} />

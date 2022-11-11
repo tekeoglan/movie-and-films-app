@@ -33,10 +33,10 @@ const Cover = ({ data, index }) => {
       <div className={styles.imageProps}>
         <span className={styles.imageTitle}>{coverTitle}</span>
         <span className={styles.imageRate}>
-          {numberTrunc(data[index]?.vote_average)}
+          {numberTrunc(data[index]?.vote_average) || "0.0"}
         </span>
         <div className={styles.imageGenre}>
-          {data[index]?.genre_ids.map((id: number, i: number) => {
+          {data[index].genre_ids?.map((id: number, i: number) => {
             return (
               <span key={i} className={styles.genre}>
                 {Genres[id]}

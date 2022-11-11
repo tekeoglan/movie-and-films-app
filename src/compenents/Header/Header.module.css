@@ -1,5 +1,9 @@
 .navbar {
-	min-height: 7.5vh;
+	position: sticky;
+	top: 0;
+	z-index: 99;
+	min-width: 720px;
+	height: 7.5vh;
 	background-color: #415A77;
 	border-bottom: .75px solid #E0E1DD;
 	display: flex;
@@ -15,6 +19,7 @@
 }
 
 .searchBar {
+	position: relative;
 	display: flex;
 	align-items: center;
 	margin: 0 1rem;
@@ -22,14 +27,10 @@
 	min-width: 5rem;
 }
 
-.searchBar form {
-	margin: 0 .25rem;
-	flex: 1;
-}
-
 .searchBar input {
 	width: 100%;
 	height: 1.75rem;
+	margin: 0 .25rem;
 	border-radius: 8px;
 	border: none;
 	background-color: #E0E1DD;
@@ -44,6 +45,61 @@
 	display: none;
 }
 
+.searchResult {
+	z-index: 100;
+	position: absolute;
+	top: 2rem;
+	left: 2.5rem;
+	width: 90%;
+	border: 1px solid #1b263b;
+	border-radius: 5px;
+	background-color: rgba(65, 90, 119, .85);
+}
+
+
+.searchResult ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+
+.searchResultProps {
+	display: flex;
+	align-items: center;
+	margin: .25rem;
+	border-bottom: 1px solid #1b263b;
+}
+
+.searchResultProps span {
+	border: 1px outset #1b263b;
+	border-radius: 5px;
+	padding: 0 .15rem;
+	margin: 0 .5rem;
+	font-weight: 600;
+	color: #e9c46a;
+	background-color: #778da9;
+}
+
+.searchResultProps a {
+	overflow: hidden;
+}
+
+.searchResultProps:hover {
+	cursor: pointer;
+	background-color: #778da9;
+	border-radius: 5px;
+}
+
+
+.imageWrapper {
+	position: relative;
+	height: 4rem;
+	width: 2.75rem;
+	border: 1px outset #1b263b;
+}
+
 .categories {
 	margin: 0 1rem;
 	width: 25%;
@@ -51,6 +107,7 @@
 
 .categories ul {
 	display: flex;
+	justify-content: flex-end;
 	align-items: center;
 	margin: 0;
 	padding: 0;

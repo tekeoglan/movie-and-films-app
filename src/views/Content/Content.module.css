@@ -7,6 +7,7 @@
 	margin: 1rem 2rem;
 	padding: 1rem;
 	height: 80vh;
+	min-height: 400px;
 }
 
 .reviews {
@@ -28,6 +29,7 @@
 	color: #E0E1DD;
 	background-color: rgba(119, 141, 169, .75);
 	border: .5px solid #E0E1DD;
+	overflow: hidden;
 }
 
 .part ul {
@@ -38,7 +40,6 @@
 
 .part p {
 	margin: .5em;
-	overflow: hidden;
 }
 
 #part1 {

@@ -1,8 +1,6 @@
 .container {
 	background-color: #415a77;
 	border-top: .75px solid #e0e1dd;
-	max-height: 5vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: 3rem;
+	text-align: center;
 }

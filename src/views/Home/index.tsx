@@ -1,24 +1,21 @@
 import Header from "compenents/Header";
 import Footer from "compenents/Footer";
 import Panel from "./compenents/Panel";
-import useFetchData from "hooks/useFetchData";
 
-const Home = () => {
-  const [movieState] = useFetchData("/trending/movie/day");
-  const [showState] = useFetchData("/trending/tv/day");
+const Home = ({ trendMoviesData, trendShowsData }) => {
   return (
     <>
       <Header />
       <main>
-        {movieState.isFetching ? (
+        {!trendMoviesData ? (
           <h5>Trending Films</h5>
         ) : (
-          <Panel tag={"Trending Films"} data={movieState.data.results} />
+          <Panel tag={"Trending Films"} data={trendMoviesData} />
         )}
-        {showState.isFetching ? (
+        {!trendShowsData ? (
           <h5>Trending Shows</h5>
         ) : (
-          <Panel tag={"Trending Shows"} data={showState.data.results} />
+          <Panel tag={"Trending Shows"} data={trendShowsData} />
         )}
       </main>
       <Footer />
